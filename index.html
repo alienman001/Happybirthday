@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0908">
+<title>For Morenike</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--sun:#f5c518;--ink:#0b0908;--ivory:#efe7da;--gold:#b89b6a;--wine:#5a1f2b;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Inter',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*:before,*:after{box-sizing:inherit}
+html{background:var(--ink);-webkit-text-size-adjust:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--ink);color:var(--ivory);font-family:var(--sans);font-weight:300;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden;height:100svh}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.label{font-size:.68rem;letter-spacing:.38em;text-transform:uppercase;color:var(--gold);margin:0}
+.dim{color:rgba(239,231,218,.5)}
+.serif{font-family:var(--serif);font-weight:300;margin:0}
+.it{font-style:italic}
+.gold{color:var(--gold)}
+section{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:7rem 1.75rem}
+section.c{align-items:center;text-align:center}
+.q{font-size:1rem;line-height:1.9;color:rgba(239,231,218,.7);max-width:34rem;margin:0}
+.c .q{margin-inline:auto}
+.r{opacity:0;transform:translateY(22px);transition:opacity 1.4s cubic-bezier(.22,1,.36,1),transform 1.4s cubic-bezier(.22,1,.36,1)}
+.r.in{opacity:1;transform:none}
+.big{font-size:clamp(2.4rem,13vw,11rem);line-height:.98;letter-spacing:-.01em}
+.mid{font-size:clamp(1.8rem,6vw,3.6rem);line-height:1.2}
+.sm{font-size:clamp(1.3rem,4vw,2.4rem);line-height:1.4}
+.gap{margin-top:6rem}
+.line{height:1px;background:rgba(184,155,106,.6);transform:scaleX(0);transform-origin:left;transition:transform 2.4s cubic-bezier(.22,1,.36,1);margin-top:6rem}
+.line.in{transform:none}
+#ent{position:fixed;inset:0;z-index:40;background:var(--ink);display:grid;place-items:center;text-align:center;padding:1.5rem;transition:opacity 1.6s}
+#ent.out{opacity:0;pointer-events:none}
+.fi{opacity:0;animation:fi 2s forwards}
+@keyframes fi{to{opacity:1}}
+.enter{min-height:48px;padding:0 1.5rem;margin-top:5rem}
+.enter:hover{color:var(--gold)}
+.chap{padding:8rem 1.75rem;min-height:0;display:block}
+.chap h3{font-size:clamp(1.9rem,9.5vw,8rem);line-height:1;text-transform:uppercase;margin:1rem 0 7rem}
+.v{margin-bottom:7rem;max-width:40rem}
+.v.s{font-size:.98rem;line-height:1.8;color:rgba(239,231,218,.65);max-width:28rem}
+.v.m{font-family:var(--serif);font-size:clamp(1.8rem,5.5vw,3rem);line-height:1.2}
+.v.l{font-family:var(--serif);font-size:clamp(2.6rem,10vw,6.5rem);line-height:1.05;min-height:70svh;display:flex;align-items:center;max-width:60rem}
+.fun{border-top:1px solid rgba(90,31,43,.5);display:block;padding:10rem 1.75rem}
+.f{max-width:46rem;margin-bottom:7rem}
+.f p{font-size:1.05rem;line-height:1.8;color:rgba(239,231,218,.75);margin:0}
+.f .b{font-family:var(--serif);font-style:italic;font-size:clamp(1.8rem,6vw,3rem);line-height:1.2;color:var(--ivory);margin-top:1.2rem}
+.btns{display:flex;gap:1.2rem;width:100%;max-width:24rem;margin-top:4rem}
+.btns button{flex:1;min-height:54px;border:1px solid rgba(239,231,218,.2);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(239,231,218,.5);transition:all .7s}
+.btns .y{border-color:var(--gold);color:var(--gold)}
+.btns .y:hover{background:var(--gold);color:var(--ink)}
+.ov{position:fixed;inset:0;z-index:50;display:none;place-items:center;text-align:center;padding:2rem;overflow:hidden}
+.ov.show{display:grid}
+#no{background:var(--ink)}
+#yes{background:#1a120c;animation:warm 3s}
+@keyframes warm{from{background:#0b0908}}
+.glow{position:absolute;inset:0;opacity:0;animation:fi 6s forwards;background:radial-gradient(60% 50% at 50% 55%,rgba(214,170,110,.55),rgba(90,31,43,.25) 55%,transparent 80%)}
+.p{position:absolute;bottom:-2%;width:3px;height:3px;border-radius:50%;background:rgba(184,155,106,.7);opacity:0;animation:up linear infinite}
+@keyframes up{0%{opacity:0;transform:translateY(0)}30%{opacity:.8}100%{opacity:0;transform:translateY(-110vh)}}
+@media(prefers-reduced-motion:reduce){.r,.line{transition:none;opacity:1;transform:none}.fi,.glow{animation-duration:.01s}.p{display:none}}
+@media(min-width:800px){section,.chap,.fun{padding-left:5rem;padding-right:5rem}.v.alt,.f.alt{margin-left:auto}}
+.em{position:absolute;font-size:clamp(1.4rem,5vw,2.4rem);opacity:0;pointer-events:none;animation:pop 3.6s ease-out forwards}
+@keyframes pop{0%{opacity:0;transform:translateY(0) scale(.2)}12%{opacity:1;transform:translateY(-12px) scale(1.25)}25%{opacity:1;transform:translateY(-26px) scale(1)}100%{opacity:0;transform:translateY(-140px) scale(.95)}}
+#mus{position:fixed;z-index:45;left:max(1rem,env(safe-area-inset-left));bottom:max(.75rem,env(safe-area-inset-bottom));display:none;text-align:left;min-height:44px;padding-right:.5rem;color:rgba(239,231,218,.6);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;line-height:1.6}
+#mus.show{display:block}#mus.on{color:var(--ivory)}#mus small{display:none;font-size:.55rem;letter-spacing:.1em;opacity:.6;text-transform:none}
+@media(prefers-reduced-motion:reduce){.em{display:none}}
+.n{display:block;margin-top:1.2rem;font-family:var(--sans);font-size:.68rem;letter-spacing:.38em;color:var(--gold)}
+#note{position:fixed;left:0;right:0;bottom:calc(env(safe-area-inset-bottom) + 4rem);z-index:46;padding:2.5rem 1.75rem 1rem;text-align:center;pointer-events:none;opacity:0;transition:opacity 1s;background:linear-gradient(to top,rgba(11,9,8,.97) 60%,transparent)}
+#note.show{opacity:1}
+#note p{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.6rem,6vw,2.6rem);line-height:1.2;margin:0;color:var(--ivory)}
+#note span{display:block;text-align:left;color:var(--gold);font-size:2rem;margin-top:.5rem}
+.fx{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+#yes.show{display:flex;overflow-y:auto;overflow-x:hidden}
+
+#mus{z-index:90!important}
+#fin{position:fixed;inset:0;z-index:80;background:#000;opacity:0;pointer-events:none;display:none;overflow:hidden;touch-action:none;overscroll-behavior:contain}
+#fin.on{display:block}#fin.show{opacity:1;pointer-events:auto;transition:opacity 2.5s}
+#bday{position:absolute;inset:0;display:grid;place-items:center;padding:1.75rem;text-align:center;transition:opacity 2s}#bday.out{opacity:0;pointer-events:none}
+.bglow{position:absolute;inset:0;opacity:0;animation:fi 8s forwards;background:radial-gradient(75% 60% at 50% 105%,rgba(245,197,24,.6),rgba(150,105,0,.28) 45%,transparent 78%)}
+.rv{opacity:0;animation:rv 2.2s forwards}@keyframes rv{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.sun{color:var(--sun)}
+#cred{position:absolute;inset:0;opacity:0;transition:opacity 2.5s}#cred.show{opacity:1}
+#cglow{position:absolute;inset:0;background:radial-gradient(90% 45% at 50% 0%,rgba(245,197,24,.10),transparent 70%),radial-gradient(90% 45% at 50% 100%,rgba(245,197,24,.16),transparent 70%)}
+#cm{position:absolute;inset:0;-webkit-mask-image:linear-gradient(to bottom,transparent,#000 16%,#000 84%,transparent);mask-image:linear-gradient(to bottom,transparent,#000 16%,#000 84%,transparent)}
+#cb{position:absolute;left:0;right:0;top:0;will-change:transform}
+.cbk{max-width:42rem;margin-left:auto;margin-right:auto;padding:0 1.75rem;text-align:center}
+.cbk .label{color:rgba(245,197,24,.8)}.cbk .n{color:var(--sun)}
+.hug{font-weight:300;font-size:clamp(2.4rem,12vw,6rem);line-height:1.02;margin:0}
+.ser{font-size:clamp(1.5rem,5.5vw,2.4rem);line-height:1.35;white-space:pre-line;margin:0}.dim2{color:rgba(239,231,218,.6)}
+.cq{font-size:1.05rem;line-height:1.9;color:rgba(239,231,218,.75);max-width:28rem;margin:0 auto}
+.vmc{font-size:clamp(1.6rem,5.8vw,2.5rem);line-height:1.25;margin:0}.vlc{font-size:clamp(2rem,8vw,3.6rem);line-height:1.1;margin:0}
+.fpb{font-size:clamp(1.6rem,6vw,2.6rem);line-height:1.15;margin:1rem 0 0}
+.lst{font-size:clamp(1.4rem,5vw,2.2rem);line-height:1.9}.lst p{margin:0}
+.rl{width:1px;height:3rem;background:rgba(245,197,24,.5);margin:0 auto}
+.sg{padding:7rem 0;background:radial-gradient(50% 50% at 50% 50%,rgba(245,197,24,.32),transparent 70%)}
+.sgs{font-size:clamp(1.4rem,5vw,2rem);color:rgba(239,231,218,.7);margin:0}
+.sgn{font-size:clamp(3rem,13vw,6.5rem);line-height:1;margin:1.5rem 0 0;color:var(--sun);text-shadow:0 0 40px rgba(245,197,24,.45)}
+#dk{position:absolute;inset:0;background:#000;opacity:0;z-index:5;pointer-events:none;transition:opacity 6s}#dk.on{opacity:1}
+#ph{position:absolute;bottom:1.5rem;left:0;right:0;text-align:center;opacity:0;transition:opacity .5s;pointer-events:none}
+
+/* ---- Voice page: his recording, her pictures ---- */
+#voice{position:fixed;inset:0;z-index:70;background:#000;opacity:0;pointer-events:none;display:none;overflow:hidden;transition:opacity 2s;touch-action:manipulation}
+#voice.on{display:block}#voice.show{opacity:1;pointer-events:auto}
+body.vo #mus,body.vo #note{display:none!important}
+.vs{position:absolute;inset:0;opacity:0;transition:opacity 3.2s ease-in-out}
+.vs.on{opacity:1}
+.vs .bd{position:absolute;inset:-10%;background-size:cover;background-position:center;filter:blur(40px) brightness(.36) saturate(1.1)}
+.vs img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 50%;transform-origin:50% 42%;will-change:transform;-webkit-user-drag:none;user-select:none}
+.vs.act img{animation:kb var(--kd,40s) ease-in-out forwards}
+@keyframes kb{from{transform:scale(1)}to{transform:scale(1.065)}}
+#voice.paused .vs.act img{animation-play-state:paused}
+#vshade{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 95% at 50% 45%,transparent 58%,rgba(0,0,0,.5)),linear-gradient(to top,rgba(0,0,0,.6),transparent 26%)}
+#vplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:none;min-height:56px;padding:0 2.2rem;border:1px solid rgba(245,197,24,.7);background:rgba(11,9,8,.62);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--ivory);letter-spacing:.36em;white-space:nowrap}
+#vplay.show{display:block;animation:fi 1.6s both}
+#vctl{position:absolute;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 1.2rem);transform:translateX(-50%);width:72px;height:52px;display:none;align-items:flex-end;justify-content:center;gap:5px;padding-bottom:14px}
+#vctl.show{display:flex}
+#vctl i{display:block;width:2px;height:24px;border-radius:2px;background:var(--sun);opacity:.78;transform-origin:50% 100%;animation:wv 1.7s ease-in-out infinite}
+#vctl i:nth-child(1){animation-delay:-.2s}#vctl i:nth-child(2){animation-delay:-.9s}#vctl i:nth-child(3){animation-delay:-.5s}#vctl i:nth-child(4){animation-delay:-1.3s}#vctl i:nth-child(5){animation-delay:-.7s}
+@keyframes wv{0%,100%{transform:scaleY(.22)}50%{transform:scaleY(1)}}
+#voice.paused #vctl i{animation:none;transform:scaleY(.2);opacity:.5}
+#vmsg{position:absolute;left:0;right:0;bottom:calc(env(safe-area-inset-bottom,0px) + 4.6rem);text-align:center;opacity:0;transition:opacity .8s;pointer-events:none;color:rgba(239,231,218,.7);font-size:.6rem}
+#vmsg.show{opacity:1}
+@media(prefers-reduced-motion:reduce){.vs.act img{animation:none}#vctl i{animation:none;transform:scaleY(.6)}}
+</style>
+</head>
+<body class="locked">
+<div id="ent">
+  <div>
+    <p class="label fi" style="animation-delay:.4s">For Morenike</p>
+    <p class="label dim fi" style="animation-delay:1.6s;margin-top:1.5rem">09 / 11 / 2026</p>
+    <h1 class="serif it fi mid" style="animation-delay:2.8s;margin-top:3.5rem">Someone I found to cherish.</h1>
+    <button class="label enter fi" style="animation-delay:4.2s;color:var(--ivory)" id="go">Enter →</button>
+  </div>
+</div>
+
+<audio id="au" loop playsinline preload="metadata" src="assets/let-me-love-you.m4a"></audio><input type="file" accept="audio/*" id="fi" hidden>
+<button id="mus" aria-label="Music"><span id="ml">♪ Let Me Love You by Lloyiso</span><small id="hint">preview: tap to pick your mp3</small></button>
+<div id="note" aria-live="polite"><p id="nt"></p><span aria-hidden="true">↙</span></div>
+<main>
+<section>
+  <p class="serif it r dim" style="margin:0 0 2.5rem;font-size:1.3rem">First, what I call you.</p>
+  <h2 class="serif big r">MORENIKE</h2>
+  <p class="serif it sm gold r" style="margin-top:2rem">I have found someone to cherish.</p>
+  <div class="gap" style="max-width:34rem;margin-left:0">
+    <p class="q r">“It took me about an hour or two to think about what Yoruba name I wanted to call you. Not just any name, but something that had a deep meaning and a connection to what I feel for you.</p>
+    <p class="q r" style="margin:1.5rem 0;color:var(--ivory)">‘Morenike’: I have found someone to cherish.</p>
+    <p class="q r">And honestly, I don’t think I could have found a better name for you.”</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="serif big r">TODAY<br><span class="it">is yours.</span></h2>
+  <p class="label r" style="margin-top:2rem">09 / 11 / 2026</p>
+  <p class="serif sm r" style="margin-top:5rem">“Happy birthday to you, baby. ❤️”</p>
+  <p class="q r" style="margin-top:2.5rem">“I wish you more success, more strength, more happiness, and, of course, more of <span class="serif" style="font-size:1.4rem;color:var(--ivory);border-bottom:1px solid var(--wine)">me</span> (just me) in your life.”</p>
+</section>
+
+<section>
+  <p class="q r">“I know you love money hahaha, but you’d spend it finish. Gifts? You’d use them, eat them, and eventually they’d finish too.”</p>
+  <p class="serif it mid r" style="margin-top:7rem;max-width:44rem">So I wanted to give you something that doesn’t finish.</p>
+  <div class="line r"></div>
+</section>
+<section class="c">
+  <h2 class="serif big r">MY VOWS.</h2>
+  <p class="label r" style="margin-top:2.5rem">My promises to you</p>
+</section>
+
+<section class="c"><p class="serif it mid r dim" style="text-decoration:line-through;text-decoration-color:var(--wine)">Not my girlfriend.</p></section>
+<section class="c">
+  <h2 class="serif big r">MY WOMAN.</h2>
+  <div class="serif it sm" style="margin-top:4rem;line-height:1.8">
+    <div class="r">My woman.</div><div class="r">My world.</div><div class="r">My other half.</div><div class="r">My best friend.</div><div class="r gold">My Bonnie.</div>
+  </div>
+  <p class="q r gap">“Hahaha, I’m not a criminal and neither are you, but I want that Bonnie-and-Clyde kind of love, baby.”</p>
+</section>
+
+<div id="vows"></div>
+
+<section class="fun">
+  <h2 class="serif r" style="font-size:clamp(2.4rem,9vw,6rem);line-height:1.02">AND BECAUSE<br><span class="it gold">I’m still me…</span></h2>
+  <div id="fun" style="margin-top:8rem"></div>
+</section>
+
+<section class="c" style="background:#0e0b0a">
+  <div style="max-width:40rem">
+    <p class="serif sm r" style="line-height:1.5">“I’ve thought about everything. I’ve thought about what I want in my life now and what I want for the rest of my life, and somehow, after everything, I always come back to <span class="gold">YOU.</span>”</p>
+    <p class="serif it mid r dim" style="margin-top:5rem">“I don’t just want a girlfriend.”</p>
+    <p class="serif big r" style="margin-top:2rem;font-size:clamp(2.6rem,10vw,5.5rem)">“I want my person.”</p>
+    <p class="q r" style="margin-top:5rem">“Someone I can laugh with, grow with, fight with, make up with, annoy, love, support, protect, and choose every single day.”</p>
+    <p class="q r" style="margin-top:2.5rem">“Someone I can always have the best intense, romantic and really nasty sex with.”</p>
+    <p class="serif it sm r" style="margin-top:5rem">“Someone I can look at years from now and still say, ‘Yeah. I’d choose her again.’”</p>
+  </div>
+</section>
+
+<section class="c" style="min-height:120svh">
+  <h2 class="serif mid r">Morenike Mercy Okoh,</h2>
+  <p class="serif it sm gold r gap">I would love to be your person.</p>
+  <div class="sm r gap" style="font-family:var(--sans);line-height:2.1;color:rgba(239,231,218,.8)">
+    <div class="r">Your man.</div><div class="r">Your brother.</div><div class="r">Your sister.</div><div class="r">Your dad.</div><div class="r">Your mom.</div><div class="r">Your everything.</div>
+  </div>
+  <p class="q r gap">“And I would love for you to be all of those things for me too.”</p>
+  <p class="serif it sm r dim" style="margin-top:5rem">“Because I don’t just want a girlfriend.”</p>
+  <p class="serif r" style="margin-top:1rem;font-size:clamp(2.2rem,8vw,4.5rem)">“I want my person.”</p>
+</section>
+
+<section class="c">
+  <h2 class="serif r" style="font-size:clamp(2.6rem,11vw,7rem);line-height:1.05;letter-spacing:-.01em">MORENIKE,<br><span class="it">will you be my woman?</span></h2>
+  <p class="label dim r" style="margin-top:2.5rem;font-size:.6rem">09 / 11 / 2026</p>
+  <div class="btns r"><button class="y" id="by">Yes ❤️</button><button id="bn">No</button></div>
+</section>
+</main>
+
+<div class="ov" id="no">
+  <div>
+    <p class="serif it" style="font-size:clamp(1.8rem,6vw,3rem);line-height:1.3;max-width:40rem">You really have to go on television and give me your reasons because I no dey joke for here. 🤓</p>
+    <button class="label" id="back" style="margin-top:3.5rem;min-height:48px;color:var(--ivory)">← Let me reconsider</button>
+  </div>
+</div>
+<div class="ov" id="yes">
+  <div class="fx"><div class="glow"></div><div id="pt"></div><div id="em" style="position:absolute;inset:0;overflow:hidden"></div></div>
+  <div style="position:relative;z-index:1;margin:auto;padding:4rem 0">
+    <h2 class="serif fi" style="font-size:clamp(3rem,12vw,8rem);letter-spacing:-.01em;animation-delay:2.2s">SHE SAID YES.</h2>
+    <p class="serif it fi" style="font-size:clamp(1.5rem,5vw,2.8rem);margin-top:2.5rem;animation-delay:4.6s">I knew you had sense. 😂❤️</p>
+    <p class="fi" style="animation-delay:9s;animation-duration:2.5s;font-size:clamp(1.05rem,3.6vw,1.5rem);line-height:1.8;color:rgba(239,231,218,.8);max-width:36rem;margin:4rem auto 0">Even if you spend mins, hours or years in here. The love emojis floating around would never stop and that’s the kind of love I want us to have together babe.</p>
+    <p class="serif it gold fi" style="animation-delay:13.5s;animation-duration:2.5s;font-size:clamp(1.9rem,7vw,3.2rem);margin-top:3rem">I love you too Kumatu.</p>
+    <p class="serif fi" style="animation-delay:16.5s;animation-duration:2.5s;font-size:clamp(1.3rem,4vw,1.7rem);line-height:1.6;margin-top:3rem"><span class="it" style="color:rgba(239,231,218,.6)">Yours,</span><br>Ifeoluwa Andre</p>
+    <button class="label dim fi" id="close" style="margin-top:3.5rem;min-height:48px;animation-delay:20s">Continue →</button>
+  </div>
+</div>
+
+<div id="voice" role="region" aria-label="A message from Ifeoluwa">
+ <div class="vs"><div class="bd"></div><img alt=""></div>
+ <div class="vs"><div class="bd"></div><img alt=""></div>
+ <div id="vshade"></div>
+ <button id="vplay" class="label" type="button">Listen to my heart</button>
+ <p id="vmsg" class="label"></p>
+ <button id="vctl" type="button" aria-label="Pause or resume my message"><i></i><i></i><i></i><i></i><i></i></button>
+</div>
+
+<div id="fin">
+ <div id="bday"><div class="bglow"></div><div style="position:relative;max-width:42rem">
+  <p class="rv" style="animation-delay:.5s;margin:0 0 2.5rem;opacity:.8">🖤 💛</p>
+  <p class="serif it sun rv" style="animation-delay:1.2s;font-size:1.9rem">And.</p>
+  <p class="serif rv" style="animation-delay:2.4s;font-size:clamp(2.4rem,10vw,5.5rem);line-height:1.05;margin-top:1rem">Happy birthday once again</p>
+  <p class="serif it sun rv" style="animation-delay:3.8s;font-size:clamp(3rem,13vw,7.5rem);line-height:1;margin-top:.5rem">my woman,</p>
+  <div class="rv" style="animation-delay:5.8s;width:6rem;height:1px;background:rgba(245,197,24,.6);margin:2.5rem auto"></div>
+  <p class="serif rv" style="animation-delay:6.5s;font-size:clamp(1.5rem,5.5vw,2.4rem);line-height:1.3">I will always cherish you and love you.</p>
+  <p class="serif it sun rv" style="animation-delay:9s;font-size:clamp(2rem,7vw,3.4rem);margin-top:1.5rem">Thank you ! ❤️</p>
+ </div></div>
+ <div id="cred"><div id="cglow"></div><div id="cm"><div id="cb"></div></div><p id="ph" class="label" style="display:none"></p></div>
+ <div id="dk"></div>
+</div>
+<script>
+const CH=[
+['Us',[['m','I promise to forgive you and value our relationship more than any fight we will ever have. I promise to protect you from all types of harm.'],['s','I vow never to intentionally cause you pain or grief. I promise to support you through the hardships of life.'],['s','I promise to put more emphasis on our relationship than on the disagreements and arguments we may have.'],['s','I vow to love you even when I don’t like your behavior.'],['m','I also promise to love my babies even more than how I love them now.','ALICIA AND SEKANI.']]],
+['Loyalty',[['l','I promise to be committed to you and only you.'],['s','I promise to be loyal to you and love you the way you wish to be loved.'],['m','I promise not to leave you in the face of whatever challenges we might have to face.'],['s','I promise to consciously and deliberately remain faithful to you, even when I’m exposed to temptation.'],['l','I promise to treat you with respect and proudly introduce you as my wife.']]],
+['Trust',[['m','I promise to give you the benefit of the doubt.'],['s','I promise to assume that your actions come from the best of intentions.'],['s','I promise not to let my impression of who you are today be influenced by your past.'],['s','I promise not to bring up ex-partners or ask about them with the wrong motives. I will leave the past where it belongs, in the past.'],['s','I promise to avoid judging you and instead put in the effort to understand your choices.'],['s','I promise never to impose my opinions or choices on you.'],['s','I promise to have open conversations with you about boundaries so we can both be happy together.']]],
+['Honesty',[['m','I promise to tell you the truth, especially when it is difficult to hear.'],['s','I promise to honestly tell you what I think we need to work on in our relationship, even when it is difficult to bring up.'],['s','I promise never to make you guess what I’m thinking or feeling. Instead, I’ll openly tell you.'],['s','I promise to admit when I’m wrong and when I make a mistake.'],['s','I promise not to have unspoken expectations about our relationship.']]],
+['Growth',[['m','I promise to support you and push you to become a better version of yourself, while also accepting it when you do the same for me.'],['s','I promise to keep working on myself and be fulfilled with my own projects so that I can genuinely be happy for your success.'],['s','I promise not to expect you to be perfect, and to love you with all your imperfections.'],['s','I promise not to treat you stereotypically or expect you to take on any specific role simply because of your gender.']]],
+['Partnership',[['l','I promise that you will never have to face any problem alone.'],['s','I promise to be by your side no matter what the situation is.'],['s','I vow to always try to be the person you can rely on.'],['s','I promise to always “have your back” in everything.'],['s','I promise to be there for you, your hopes, and your dreams.'],['s','I promise to value our differences and work through them until they become our strengths as a couple.']]],
+['The Little Things',[['m','I promise not to take you for granted.'],['s','I promise to listen to you with the intention of actually hearing you, not just listening while waiting for my turn to talk.'],['s','I promise to take the words “never” and “always” out of our arguments.'],['s','I promise to always be creative in thinking of ways to make you happy.'],['s','I promise to be interested in the things you love and the activities you enjoy, even if they’re scary or somewhat boring to me.']]]];
+const FUN=[
+['I promise to keep our relationship fun and avoid letting us fall into boring routines. And if we ever get boring, please don’t leave. 😂 We’re going to fix it.','Remember, I am a self-acclaimed Oscar award winner. 🤓'],
+['I promise to go with your movie choice at least 50% of the time, even if they’re not ROMCOMs. 😂','You know I love romcoms, or just comedy movies.'],
+['I promise to kiss you even if you have bad breath. 🌚'],
+['I promise to laugh at all the jokes you make, regardless of how unskillfully you tell them. Sometimes you dey drop bangers o, but not all the time.','You still dey learn from me. 😎'],
+['I promise to eat what you cook, even if I have to pretend I enjoy it and endure the stomach aches afterwards. 😂','Sha, no kill me abeg.'],
+['I promise to laugh at myself and tease you too.'],
+['I promise to know exactly how you like your eggs and coffee in the morning. 🌚']];
+document.getElementById('vows').innerHTML=CH.map((c,i)=>`<section class="chap"><p class="label r">0${i+1}</p><h3 class="serif r">${c[0]}</h3>${c[1].map((v,j)=>`<div class="v ${v[0]} ${v[0]!='l'&&j%2?'alt':''} r">${v[1]}${v[2]?`<span class="n">${v[2]}</span>`:''}</div>`).join('')}</section>`).join('');
+document.getElementById('fun').innerHTML=FUN.map((f,i)=>`<div class="f ${i%2?'alt':''} r"><p>${f[0]}</p>${f[1]?`<div class="b">${f[1]}</div>`:''}</div>`).join('');
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.35});
+document.querySelectorAll('.r').forEach(el=>io.observe(el));
+const $=id=>document.getElementById(id);
+$('go').onclick=()=>{$('au').play().catch(()=>{});$('mus').classList.add('show');setTimeout(()=>{$('nt').textContent=$('au').paused?'Tap the song at the bottom left so it can play.':'Your song is playing. Tap it anytime to pause.';$('note').classList.add('show');setTimeout(()=>$('note').classList.remove('show'),7500)},800);$('ent').classList.add('out');document.body.classList.remove('locked');scrollTo(0,0)};
+// The end credits: every message of the story, replayed in order.
+// Kinds: lab (small label), hug (huge title, optional italic 2nd line), ser (serif), ita (soft italic),
+// q (quiet paragraph), vl/vm/vs (vows), fp (funny promise + punchline), list, rule, sign.
+// *word* = highlighted in yellow.
+function buildCredits(CH, FUN) {
+  const b = []
+  const add = (...x) => b.push(x)
+  add('lab', '09 / 11 / 2026'); add('hug', 'For Morenike'); add('ita', 'Someone I found to cherish.')
+  add('rule')
+  add('ita', 'First, what I call you.'); add('hug', 'MORENIKE'); add('ser', 'I have found someone to cherish.')
+  add('q', '“It took me about an hour or two to think about what Yoruba name I wanted to call you. Not just any name, but something that had a deep meaning and a connection to what I feel for you.')
+  add('q', '‘Morenike’: I have found someone to cherish.')
+  add('q', 'And honestly, I don’t think I could have found a better name for you.”')
+  add('rule')
+  add('hug', 'TODAY', 'is yours.'); add('lab', '09 / 11 / 2026')
+  add('ser', '“Happy birthday to you, baby. ❤️”')
+  add('q', '“I wish you more success, more strength, more happiness, and, of course, more of *me* (just me) in your life.”')
+  add('rule')
+  add('q', '“I know you love money hahaha, but you’d spend it finish. Gifts? You’d use them, eat them, and eventually they’d finish too.”')
+  add('ser', 'So I wanted to give you something that doesn’t finish.')
+  add('hug', 'MY VOWS.'); add('lab', 'My promises to you')
+  add('rule')
+  add('ita', 'Not my girlfriend.'); add('hug', 'MY WOMAN.')
+  add('list', ['My woman.', 'My world.', 'My other half.', 'My best friend.', 'My Bonnie.'])
+  add('q', '“Hahaha, I’m not a criminal and neither are you, but I want that Bonnie-and-Clyde kind of love, baby.”')
+  CH.forEach((c, i) => {
+    add('rule'); add('lab', '0' + (i + 1)); add('hug', c.title.toUpperCase())
+    c.items.forEach(v => add('v' + v.s, v.t, v.n))
+  })
+  add('rule'); add('hug', 'AND BECAUSE', 'I’m still me…')
+  FUN.forEach(f => add('fp', f.a, f.b))
+  add('rule')
+  add('ser', '“I’ve thought about everything. I’ve thought about what I want in my life now and what I want for the rest of my life, and somehow, after everything, I always come back to *YOU.*”')
+  add('ita', '“I don’t just want a girlfriend.”'); add('hug', '“I want my person.”')
+  add('q', '“Someone I can laugh with, grow with, fight with, make up with, annoy, love, support, protect, and choose every single day.”')
+  add('q', '“Someone I can always have the best intense, romantic and really nasty sex with.”')
+  add('ser', '“Someone I can look at years from now and still say, ‘Yeah. I’d choose her again.’”')
+  add('rule')
+  add('ser', 'Morenike Mercy Okoh,'); add('ser', '*I would love to be your person.*')
+  add('list', ['Your man.', 'Your brother.', 'Your sister.', 'Your dad.', 'Your mom.', 'Your everything.'])
+  add('q', '“And I would love for you to be all of those things for me too.”')
+  add('ita', '“Because I don’t just want a girlfriend.”'); add('hug', '“I want my person.”')
+  add('rule')
+  add('hug', 'MORENIKE,', 'will you be my woman?'); add('lab', '09 / 11 / 2026')
+  add('rule')
+  add('hug', 'SHE SAID YES.'); add('ser', 'I knew you had sense. 😂❤️')
+  add('q', 'Even if you spend mins, hours or years in here. The love emojis floating around would never stop and that’s the kind of love I want us to have together babe.')
+  add('ser', '*I love you too Kumatu.*')
+  add('rule')
+  add('ser', 'And. Happy birthday once again my woman,\nI will always cherish you and love you. Thank you !')
+  add('rule')
+  add('sign', 'From yours,', 'Ifeoluwa Andre')
+  return b
+}
+
+const SP=Number(new URLSearchParams(location.search).get('speed'))||1,WPS=3,TAIL=11,HOLD=5,SONG2='assets/back-to-u.m4a';
+let fin=0,ft,trk=1,paused=false;
+const CHo=CH.map(c=>({title:c[0],items:c[1].map(v=>({s:v[0],t:v[1],n:v[2]}))})),FUNo=FUN.map(f=>({a:f[0],b:f[1]}));
+const Y=s=>s.split('*').map((p,i)=>i%2?`<span class="sun">${p}</span>`:p).join('');
+function BL(b){const[k,a,c]=b,n=c?`<span class="n">${c}</span>`:'';
+ if(k=='lab')return`<p class="label">${a}</p>`;
+ if(k=='hug')return`<h2 class="serif hug">${Y(a)}${c?`<br><span class="it sun">${c}</span>`:''}</h2>`;
+ if(k=='ser')return`<p class="serif ser">${Y(a)}</p>`;
+ if(k=='ita')return`<p class="serif ser it dim2">${Y(a)}</p>`;
+ if(k=='q')return`<p class="cq">${Y(a)}</p>`;
+ if(k=='vs')return`<p class="cq">${a}${n}</p>`;
+ if(k=='vm')return`<p class="serif vmc">${a}${n}</p>`;
+ if(k=='vl')return`<p class="serif vlc">${a}${n}</p>`;
+ if(k=='fp')return`<p class="cq">${a}</p>${c?`<p class="serif it sun fpb">${c}</p>`:''}`;
+ if(k=='list')return`<div class="serif it lst">${a.map(l=>`<p>${l}</p>`).join('')}</div>`;
+ if(k=='rule')return'<div class="rl"></div>';
+ return`<div class="sg"><p class="serif it sgs">${a}</p><p class="serif sgn">${c}</p></div>`}
+const gp=k=>k=='lab'?'1rem':'3rem';
+const canVol=el=>{try{const v=el.volume;el.volume=.5;const ok=el.volume===.5;el.volume=v;return ok}catch(e){return false}};
+const fadeV=(el,f,t,ms,d)=>{const t0=performance.now();const s=()=>{const k=Math.min(1,(performance.now()-t0)/ms);el.volume=f+(t-f)*k;k<1?requestAnimationFrame(s):d&&d()};requestAnimationFrame(s)};
+function swap(){const el=$('au'),vol=canVol(el);const begin=()=>{el.src=SONG2;el.loop=false;trk=2;$('ml').textContent='♪ Back To U by Seyi Vibez';if(vol)el.volume=0;const fi=()=>{if(vol)fadeV(el,0,1,3500)};const p=el.play();if(p)p.then(fi).catch(()=>{const ev=['pointerdown','touchend','keydown'];const r=()=>{el.play().catch(()=>{});ev.forEach(e=>document.removeEventListener(e,r))};ev.forEach(e=>document.addEventListener(e,r));el.addEventListener('playing',fi,{once:true})});else fi()};if(vol&&!el.paused)fadeV(el,el.volume,0,2500,begin);else begin()}
+function endMusic(){const el=$('au');if(canVol(el))fadeV(el,el.volume,0,6000,()=>el.pause())}
+function finale(){if(fin||!voDone)return;fin=1;vstg=2;clearTimeout(ft);stop();document.body.classList.remove('vo');document.body.classList.add('locked');const f=$('fin');f.classList.add('on');requestAnimationFrame(()=>requestAnimationFrame(()=>f.classList.add('show')));swap();setTimeout(()=>{$('bday').classList.add('out');$('cred').classList.add('show');runCredits()},13000/SP);setTimeout(()=>{$('voice').classList.remove('on','show')},3000)}
+function runCredits(){const el=$('cb');el.innerHTML=buildCredits(CHo,FUNo).map(b=>`<div class="cbk" style="margin-bottom:${gp(b[0])}">${BL(b)}</div>`).join('');
+const au=$('au'),kids=[...el.children],H=innerHeight,dur=isFinite(au.duration)?au.duration:162.3,rem=Math.max(45,dur-(au.paused?0:au.currentTime)),avail=Math.max(30,rem-TAIL)/SP;
+const C=kids.map(k=>k.offsetTop+k.offsetHeight/2),W=kids.map((k,i)=>k.textContent.trim().split(/\s+/).filter(Boolean).length+(i==kids.length-1?12:0)),S=C.map(c=>c-H/2),T=[3];
+for(let i=1;i<S.length;i++)T.push(T[i-1]+.6+(W[i-1]+W[i])/2/WPS);
+const k=avail/T[T.length-1],S0=S[0]-H*.55,tg=t=>{if(t<=T[0])return S0+(S[0]-S0)*(t/T[0]);let i=1;while(i<T.length-1&&t>T[i])i++;return S[i-1]+(S[i]-S[i-1])*Math.min(1,(t-T[i-1])/(T[i]-T[i-1]))};
+el.dataset.total=Math.round(avail);let pos=S0,ex=0,last=performance.now(),ended=0;
+const tick=now=>{const dt=Math.min(.1,(now-last)/1000);last=now;ex+=dt;pos+=(tg(ex/k)-pos)*(1-Math.exp(-dt*3));el.style.transform=`translate3d(0,${-pos}px,0)`;if(!ended&&ex>=avail+HOLD/SP){ended=1;$('dk').classList.add('on');endMusic()}requestAnimationFrame(tick)};requestAnimationFrame(tick)}
+let tm,t0;const LV=['❤️','🥰','😍','💕','💖','😘','🤍','💗'];
+const pop=()=>{const s=document.createElement('span');s.className='em';s.textContent=LV[Math.random()*LV.length|0];s.style.left=(6+Math.random()*84)+'%';s.style.top=(15+Math.random()*70)+'%';s.onanimationend=()=>s.remove();$('em').appendChild(s)};
+const stop=()=>{clearTimeout(t0);clearInterval(tm);$('em').innerHTML=''};
+$('by').onclick=()=>{$('yes').classList.add('show');stop();clearTimeout(ft);voWarm();ft=setTimeout(goVoice,28000/SP);t0=setTimeout(()=>{for(let i=0;i<10;i++)setTimeout(pop,i*90);tm=setInterval(pop,420)},1800)};
+$('mus').onclick=()=>{if(!$('au').src){$('fi').click();return}$('au').paused?$('au').play():$('au').pause()};
+$('fi').onchange=()=>{const f=$('fi').files[0];if(!f)return;$('au').src=URL.createObjectURL(f);$('au').play().catch(()=>{});$('hint').remove()};
+$('au').onerror=()=>{if(trk>1)return;$('au').removeAttribute('src');$('hint').style.display='block'};$('au').onplay=()=>$('mus').classList.add('on');$('au').onpause=()=>$('mus').classList.remove('on');
+$('bn').onclick=()=>{$('no').classList.add('show')};
+$('back').onclick=()=>$('no').classList.remove('show');
+$('close').onclick=goVoice;
+
+// ---- Voice page: his recording, her pictures. ONE audio element plays everything (song -> voice -> song),
+// so the voice can never overlap a song. The recording is the master clock; the slideshow follows currentTime. ----
+const VI=["photo-01.jpg","photo-02.jpg","photo-03.jpg","photo-04.jpg","photo-05.jpg","photo-06.jpg","photo-07.jpg","photo-08.jpg","photo-09.jpg","photo-10.jpg","photo-11.jpg","photo-12.jpg","photo-13.jpg","photo-14.jpg"].map(i=>'assets/'+i),VURL='assets/voice-message.m4a',VOHOLD=5000;
+let voOn=0,voDone=0,voBad=0,voLoading=0,vi=-1,vl=0,vstg=0;
+const vo=$('au'),VS=[...document.querySelectorAll('.vs')];
+const vdur=()=>isFinite(vo.duration)&&vo.duration>0?vo.duration:440;
+function vShow(i){if(i===vi)return;vi=i;vl^=1;const L=VS[vl],o=VS[vl^1];
+ L.querySelector('img').src=VI[i];L.querySelector('.bd').style.backgroundImage="url('"+VI[i]+"')";
+ L.style.setProperty('--kd',(vdur()/VI.length+5)+'s');L.classList.remove('act');void L.offsetWidth;L.classList.add('act','on');o.classList.remove('on')}
+function vSync(){if(!voOn)return;vShow(Math.min(VI.length-1,Math.floor(vo.currentTime/(vdur()/VI.length))))}
+function vUI(s){$('voice').classList.toggle('paused',!(s=='play'||s=='end'));
+ $('vplay').classList.toggle('show',s=='ask'||s=='bad');$('vctl').classList.toggle('show',s=='play'||s=='pause');$('vmsg').textContent=s=='pause'?'tap to continue':'';$('vmsg').classList.toggle('show',s=='pause')}
+// Called on the "Yes" tap: preload her photos, and if nothing has been unlocked yet (e.g. the entrance was skipped) unlock the player silently.
+function voWarm(){VI.forEach(u=>{const im=new Image();im.src=u});
+ if(vo.paused&&!voOn){try{vo.muted=true;const p=vo.play();if(p)p.then(()=>{if(!voOn)vo.pause();vo.muted=false}).catch(()=>{vo.muted=false})}catch(e){vo.muted=false}}}
+function voStart(){voLoading=1;vo.muted=false;const p=vo.play();if(p)p.catch(()=>{voLoading=0;$('vplay').textContent='Listen to my heart';vUI('ask')})}
+function voLoad(){vo.pause();vo.loop=false;vo.muted=false;try{vo.volume=1}catch(e){}trk=3;vo.src=VURL;vo.load();voStart()}
+function goVoice(){if(voOn||fin)return;voOn=1;vstg=1;clearTimeout(ft);stop();document.body.classList.add('vo');
+ const v=$('voice');v.classList.add('on');vUI('wait');vShow(0);requestAnimationFrame(()=>requestAnimationFrame(()=>v.classList.add('show')));
+ setTimeout(()=>$('yes').classList.remove('show'),2400);
+ // the song from the YES page is faded out and the SAME player is then re-pointed at the voice recording
+ if(!vo.paused){if(canVol(vo))fadeV(vo,vo.volume,0,1200);setTimeout(voLoad,1400)}else voLoad()}
+const von=(e,f)=>vo.addEventListener(e,()=>{if(vstg===1)f()});
+von('loadedmetadata',vSync);von('timeupdate',vSync);von('seeked',vSync);
+von('playing',()=>{voLoading=0;if(!voDone)vUI('play')});
+von('pause',()=>{if(voDone||vo.ended||voLoading||voBad)return;vUI('pause')});
+von('error',()=>{if(voDone)return;voLoading=0;voBad=1;$('vplay').textContent='Tap to try again';vUI('bad')});
+von('ended',()=>{if(voDone)return;if(vdur()-vo.currentTime>2)return;voDone=1;vUI('end');vShow(VI.length-1);setTimeout(finale,VOHOLD)});
+$('vplay').onclick=()=>{if(voBad){voBad=0;const t=vo.currentTime||0;vo.load();vo.addEventListener('loadedmetadata',()=>{try{vo.currentTime=t}catch(e){}},{once:true})}
+ voLoading=1;const p=vo.play();if(p)p.catch(()=>{voLoading=0;voBad=1;$('vplay').textContent='Tap to try again';vUI('bad')})};
+$('vctl').onclick=()=>{if(vo.paused){const p=vo.play();if(p)p.catch(()=>{})}else vo.pause()};
+$('pt').innerHTML=Array.from({length:16},(_,i)=>`<span class="p" style="left:${(i*37)%100}%;animation-duration:${7+i%4}s;animation-delay:${2+i*.35}s"></span>`).join('');
+</script>
+</body>
+</html>
